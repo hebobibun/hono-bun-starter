@@ -1,7 +1,9 @@
 {
   "name": "hono-bun-turso",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "db:gen": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
