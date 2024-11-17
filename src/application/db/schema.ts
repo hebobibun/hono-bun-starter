@@ -5,17 +5,25 @@ export const usersTable = sqliteTable('users', {
     userID: text('user_id').primaryKey(),
     fullname: text('fullname').notNull(),
     email: text('email').notNull().unique(),
+    emailVerified: integer('email_verified', { 
+        mode: 'boolean' 
+    }).default(false),
     password: text('password').notNull(),
+    isLocked: integer('is_locked', { 
+        mode: 'boolean' 
+    }).default(false),
     createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
     updatedAt: text('updated_at').default(sql`CURRENT_TIMESTAMP`),
 });
 
 export const sessionsTable = sqliteTable('sessions', {
     sessionID: text('session_id').primaryKey(),
-    userID: text('user_id').notNull().references(() => usersTable.userID, {
-        onDelete: 'cascade',
-    }),
-    expires: text('expires').notNull(),
+    userID: text('user_id')
+        .notNull()
+        .references(() => usersTable.userID, {
+            onDelete: 'cascade',
+        }),
+    expiry: integer('expiry', { mode: 'timestamp_ms' }).notNull(),
 });
 
 export const contactsTable = sqliteTable('contacts', {

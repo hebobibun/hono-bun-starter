@@ -45,3 +45,43 @@ describe('POST /api/users', () => {
         expect(response.status).toBe(200)
     })
 })
+
+describe('POST /api/login', () => {
+    it('should reject login user if request is invalid', async () => {
+        const response = await app.request('/api/users/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: "",
+                password: "",
+            }),
+        })
+
+        expect(response.status).toBe(400)
+        // expect(res.errors).toBeDefined()
+    })
+
+    it('should reject login user if email or password is invalid', async () => {
+        const response = await app.request('/api/users/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: "john@example.com",
+                password: "wrongpassword",
+            }),
+        })
+
+        expect(response.status).toBe(401)
+        // expect(res.errors).toBeDefined()
+    })
+
+    it('should successfully login a user', async () => {
+        const response = await app.request('/api/users/login', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: "john@example.com",
+                password: "password",
+            }),
+        })
+
+        expect(response.status).toBe(200)
+    })
+})

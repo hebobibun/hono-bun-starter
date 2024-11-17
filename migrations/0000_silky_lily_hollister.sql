@@ -22,7 +22,7 @@ CREATE TABLE `contacts` (
 CREATE TABLE `sessions` (
 	`session_id` text PRIMARY KEY NOT NULL,
 	`user_id` text NOT NULL,
-	`expires` text NOT NULL,
+	`expiry` integer NOT NULL,
 	FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON UPDATE no action ON DELETE cascade
 );
 --> statement-breakpoint
@@ -30,7 +30,9 @@ CREATE TABLE `users` (
 	`user_id` text PRIMARY KEY NOT NULL,
 	`fullname` text NOT NULL,
 	`email` text NOT NULL,
+	`email_verified` integer DEFAULT false,
 	`password` text NOT NULL,
+	`is_locked` integer DEFAULT false,
 	`created_at` text DEFAULT CURRENT_TIMESTAMP,
 	`updated_at` text DEFAULT CURRENT_TIMESTAMP
 );
