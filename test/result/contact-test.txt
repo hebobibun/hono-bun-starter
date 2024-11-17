@@ -1,0 +1,59 @@
+bun test v1.1.32 (fe8d0079)
+
+test/contact-test.ts:
+<-- POST /api/contacts
+--> POST /api/contacts 401 0ms
+✓ POST /api/contacts > should reject create contact if user is not authorized [5.92ms]
+<-- POST /api/contacts
+--> POST /api/contacts 400 441ms
+✓ POST /api/contacts > should reject create contact if request is invalid [489.42ms]
+<-- POST /api/contacts
+--> POST /api/contacts 400 323ms
+✓ POST /api/contacts > should reject create contact if email is invalid [359.09ms]
+<-- POST /api/contacts
+--> POST /api/contacts 200 655ms
+✓ POST /api/contacts > should successfully create a new contact [727.68ms]
+<-- GET /api/contacts/1
+--> GET /api/contacts/1 401 0ms
+✓ GET /api/contacts/:id > should reject get contact if user is not authorized [0.28ms]
+<-- GET /api/contacts/abc
+--> GET /api/contacts/abc 400 322ms
+✓ GET /api/contacts/:id > should reject get contact if contact ID is invalid [357.34ms]
+<-- GET /api/contacts/1
+--> GET /api/contacts/1 403 647ms
+✓ GET /api/contacts/:id > should reject get contact if user is not authorized [718.70ms]
+<-- GET /api/contacts/1
+--> GET /api/contacts/1 200 665ms
+✓ GET /api/contacts/:id > should successfully get a contact [739.05ms]
+<-- PUT /api/contacts/1
+--> PUT /api/contacts/1 401 0ms
+✓ PUT /api/contacts/:id > should reject update contact if user is not authorized [0.31ms]
+<-- PUT /api/contacts/abc
+--> PUT /api/contacts/abc 400 321ms
+✓ PUT /api/contacts/:id > should reject update contact if contact ID is invalid [357.06ms]
+<-- PUT /api/contacts/1
+--> PUT /api/contacts/1 400 332ms
+✓ PUT /api/contacts/:id > should reject update contact if email is invalid [369.36ms]
+<-- PUT /api/contacts/1
+--> PUT /api/contacts/1 403 669ms
+✓ PUT /api/contacts/:id > should reject update contact if user is not authorized [743.88ms]
+<-- PUT /api/contacts/1
+--> PUT /api/contacts/1 200 1s
+✓ PUT /api/contacts/:id > should successfully update a contact [1293.13ms]
+<-- DELETE /api/contacts/1
+--> DELETE /api/contacts/1 401 0ms
+✓ DELETE /api/contacts/:id > should reject delete contact if user is not authorized [0.33ms]
+<-- DELETE /api/contacts/abc
+--> DELETE /api/contacts/abc 400 945ms
+✓ DELETE /api/contacts/:id > should reject delete contact if contact ID is invalid [1051.09ms]
+<-- DELETE /api/contacts/1
+--> DELETE /api/contacts/1 403 912ms
+✓ DELETE /api/contacts/:id > should reject delete contact if user is not authorized [1013.74ms]
+<-- DELETE /api/contacts/1
+--> DELETE /api/contacts/1 200 1s
+✓ DELETE /api/contacts/:id > should successfully delete a contact [1399.70ms]
+
+ 17 pass
+ 0 fail
+ 17 expect() calls
+Ran 17 tests across 1 files. [8.73s]
