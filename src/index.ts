@@ -3,6 +3,7 @@ import { OpenAPIHono } from '@hono/zod-openapi';
 import { swaggerUI } from "@hono/swagger-ui";
 import { logger } from 'hono/logger'
 import { userController } from './controller/user-controller'
+import { contactController } from './controller/contact-controller';
 
 
 const app = new OpenAPIHono()
@@ -13,6 +14,7 @@ app.get('/', (c) => {
 })
 
 app.route('/', userController)
+app.route('/', contactController)
 
 app.doc('/doc', {
   openapi: '3.0.0',
