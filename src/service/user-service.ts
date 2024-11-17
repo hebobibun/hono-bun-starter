@@ -79,7 +79,7 @@ export class UserService {
                 .from(usersTable)
                 .where(eq(usersTable.email, validatedRequest.email));
 
-            if (user.length === 0 || !user[0].emailVerified) {
+            if (user.length === 0) {
                 throw new HTTPException(400, {
                     message: "Email or password is invalid"
                 });
