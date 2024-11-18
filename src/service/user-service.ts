@@ -3,8 +3,9 @@ import { db } from "../application/db";
 import { LoginUserRequest, RegisterUserRequest, toUserResponse, UserResponse } from "../model/user-model";
 import { UserValidation } from "../validation/user-validation";
 import { count, eq } from "drizzle-orm";
-import { sessionsTable, usersTable } from "../application/db/schema";
+import { emailVerificationsTable, sessionsTable, usersTable } from "../application/db/schema";
 import { ZodError } from "zod";
+import { sendMail } from "../utils/mail-sender";
 
 export class UserService {
     static async registerUser(request: RegisterUserRequest): Promise<UserResponse> {
@@ -43,6 +44,39 @@ export class UserService {
                     password: hashedPassword,
                 })
                 .returning();
+
+            // generate token for email verification
+            const token = crypto.randomUUID();
+
+            // store email verication
+            await db
+                .insert(emailVerificationsTable)
+                .values({
+                    userID: user[0].userID,
+                    email: validatedRequest.email,
+                    token,
+                    expiry: new Date(Date.now() + 24 * 3600 * 1000),
+                });
+
+            // define subject and body email
+            const verificationLink = `${process.env.BASE_URL}/verify-email?email=${validatedRequest.email}&token=${token}`;
+            const subject = "Account Email Verification"
+            const body = `
+                <div style="font-family: Arial, sans-serif; max-width: 600px;">
+                    <p>Please click link below to verify your account :</p>
+                    <p>${verificationLink}</p>
+                    <p>If you did not request this verification, please ignore this email.</p>
+                </div>
+            `
+
+            // send email
+            const sent = sendMail(validatedRequest.email, subject, body)
+
+            if (!sent) {
+                throw new HTTPException(500, {
+                    message: "Unable to proceed email verification request"
+                });
+            }
 
             // Return response
             return toUserResponse(user[0]);
@@ -91,6 +125,13 @@ export class UserService {
             if (!isPasswordCorrect) {
                 throw new HTTPException(401, {
                     message: "Email or password is invalid"
+                });
+            }
+
+            // Check if user is verified
+            if (!user[0].emailVerified) {
+                throw new HTTPException(401, {
+                    message: "Email is not verified"
                 });
             }
 

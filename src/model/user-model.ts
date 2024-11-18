@@ -12,6 +12,11 @@ export type LoginUserRequest = {
     password: string;
 }
 
+export type verifyEmailRequest = {
+    token?: string;
+    email?: string;
+}
+
 export type UserResponse = {
     fullname: string;
     email: string;

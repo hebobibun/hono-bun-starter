@@ -12,6 +12,8 @@ export const usersTable = sqliteTable('users', {
     isLocked: integer('is_locked', { 
         mode: 'boolean' 
     }).default(false),
+    lockedReason: text('locked_reason'),
+    lockedAt: text('locked_at'),
     createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
     updatedAt: text('updated_at').default(sql`CURRENT_TIMESTAMP`),
 });
@@ -47,6 +49,17 @@ export const addressesTable = sqliteTable('addresses', {
     contactID: integer('contact_id').notNull().references(() => contactsTable.contactID, {
         onDelete: 'cascade',
     }),
+});
+
+export const emailVerificationsTable = sqliteTable('email_verifications', {
+    userID: text('user_id').primaryKey().references(() => usersTable.userID, {
+        onDelete: 'cascade',
+    }),
+    email: text('email').notNull(),
+    token: text('token').notNull(),
+    expiry: integer('expiry', { mode: 'timestamp_ms' }).notNull(),
+    createdAt: text('created_at').default(sql`CURRENT_TIMESTAMP`),
+    updatedAt: text('updated_at').default(sql`CURRENT_TIMESTAMP`),
 });
 
 export type InsertUser = typeof usersTable.$inferInsert;
