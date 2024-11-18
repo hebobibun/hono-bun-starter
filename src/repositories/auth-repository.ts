@@ -7,7 +7,7 @@ import { verifyEmailRequest } from "../model/user-model";
 import { ZodError } from "zod";
 import { sendMail } from "../utils/mail-sender";
 
-export class AuthService {
+export class AuthRepository {
     static async verifyToken(session_id: string | undefined | null): Promise<string> {
         try {
             // Validate session ID format

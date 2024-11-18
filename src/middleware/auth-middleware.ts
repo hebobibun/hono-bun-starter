@@ -1,5 +1,5 @@
 import { MiddlewareHandler } from "hono";
-import { AuthService } from "../service/auth-service";
+import { AuthRepository } from "../repositories/auth-repository";
 
 export const authMiddleware: MiddlewareHandler = async (c, next) => {
     const session_id = c.req.header('Authorization');
@@ -11,7 +11,7 @@ export const authMiddleware: MiddlewareHandler = async (c, next) => {
     }
 
     const token = session_id.split(' ')[1];
-    const userID = await AuthService.verifyToken(token);
+    const userID = await AuthRepository.verifyToken(token);
 
     // check if userID is valid
     if (!userID) {

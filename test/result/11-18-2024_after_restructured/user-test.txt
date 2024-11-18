@@ -1,0 +1,26 @@
+bun test v1.1.32 (fe8d0079)
+
+test/user-test.ts:
+<-- POST /api/users
+--> POST /api/users 400 1ms
+✓ POST /api/users > should reject register user if request is invalid [6.78ms]
+<-- POST /api/users
+--> POST /api/users 400 488ms
+✓ POST /api/users > should reject register user if email already exists [531.90ms]
+<-- POST /api/users
+--> POST /api/users 200 851ms
+✓ POST /api/users > should successfully register a new user [928.78ms]
+<-- POST /api/users/login
+--> POST /api/users/login 400 1ms
+✓ POST /api/login > should reject login user if request is invalid [0.70ms]
+<-- POST /api/users/login
+--> POST /api/users/login 401 311ms
+✓ POST /api/login > should reject login user if email or password is invalid [339.67ms]
+<-- POST /api/users/login
+--> POST /api/users/login 200 581ms
+✓ POST /api/login > should successfully login a user [633.69ms]
+
+ 6 pass
+ 0 fail
+ 6 expect() calls
+Ran 6 tests across 1 files. [2.33s]

@@ -7,7 +7,7 @@ import { emailVerificationsTable, sessionsTable, usersTable } from "../applicati
 import { ZodError } from "zod";
 import { sendMail } from "../utils/mail-sender";
 
-export class UserService {
+export class UserRepository {
     static async registerUser(request: RegisterUserRequest): Promise<UserResponse> {
         try {
             // Validate request using Zod schema

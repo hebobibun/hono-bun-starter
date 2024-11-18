@@ -7,7 +7,7 @@ import { HTTPException } from "hono/http-exception";
 import { ZodError } from "zod";
 
 
-export class ContactService {
+export class ContactRepository {
 
     static async createContact(user: string, request: CreateContactRequest): Promise<ContactResponse> {
         try {
