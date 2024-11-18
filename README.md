@@ -1,5 +1,5 @@
 # Hono Bun Starter
-A minimal starter template for building web applications using Hono & Bun.
+A minimal starter template for building web applications using Hono & Bun. Implemented with a clean Layered Architecture. Designed for scalable and maintainable backend development with clear separation of concerns across Presentation, Application, Domain, and Infrastructure layers.
 
 ## We're using
 - 🚀 **Web Framework**: Hono
