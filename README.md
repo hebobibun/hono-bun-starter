@@ -1,13 +1,13 @@
-# Hono Bun Turso
-Example of using Hono with Bun and Turso
+# Hono Bun Starter
+A minimal starter template for building web applications using Hono & Bun.
 
 ## We're using
-- Hono as web framework
-- Bun as Package Manager & Runtime
-- Turso as Database
-- Drizzle as ORM
-- Resend as Email Service
-- Zod as Schema Validator
+- 🚀 **Web Framework**: Hono
+- 🧊 **Runtime & Package Manager**: Bun
+- 💾 **Database**: Turso (Serverless SQLite)
+- 🛠️ **ORM**: Drizzle
+- 📧 **Email Service**: Resend
+- 🔐 **Validation**: Zod
 
 ## How to run
 To install dependencies:
