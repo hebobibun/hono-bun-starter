@@ -35,7 +35,6 @@ Designed for scalable and maintainable backend development with clear separation
 │   │   └── model
 │   │       ├── contact-model.ts
 │   │       └── user-model.ts
-│   ├── index.ts
 │   ├── infrastructure
 │   │   ├── database
 │   │   │   ├── index.ts
@@ -48,21 +47,16 @@ Designed for scalable and maintainable backend development with clear separation
 │   │       ├── auth-repository.ts
 │   │       ├── contact-repository.ts
 │   │       └── user-repository.ts
-│   └── presentation
-│       ├── middleware
-│       │   └── auth-middleware.ts
-│       └── routers
-│           ├── contact-router.ts
-│           └── user-router.ts
+│   ├── presentation
+│   │   ├── middleware
+│   │   │   └── auth-middleware.ts
+│   │   └── routers
+│   │       ├── contact-router.ts
+│   │       └── user-router.ts
+│   └── index.ts
 ├── test
-│   ├── contact-test.ts
 │   ├── result
-│   │   ├── 11-18-2024_after_restructured
-│   │   │   ├── contact-test.txt
-│   │   │   └── user-test.txt
-│   │   └── initial
-│   │       ├── contact-test.txt
-│   │       └── user-test.txt
+│   ├── contact-test.ts
 │   └── user-test.ts
 ├── .env
 ├── bun.lockb
