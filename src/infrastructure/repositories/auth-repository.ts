@@ -1,11 +1,11 @@
 import { and, eq } from "drizzle-orm";
-import { db } from "../application/db";
-import { emailVerificationsTable, sessionsTable, usersTable } from "../application/db/schema";
-import { AuthValidation } from "../validation/auth-validation";
+import { db } from "../database";
+import { emailVerificationsTable, sessionsTable, usersTable } from "../database/schema";
+import { AuthValidation } from "../../application/validation/auth-validation";
 import { HTTPException } from "hono/http-exception";
-import { verifyEmailRequest } from "../model/user-model";
+import { verifyEmailRequest } from "../../domain/model/user-model";
 import { ZodError } from "zod";
-import { sendMail } from "../utils/mail-sender";
+import { sendMail } from "../external/mail-sender";
 
 export class AuthRepository {
     static async verifyToken(session_id: string | undefined | null): Promise<string> {

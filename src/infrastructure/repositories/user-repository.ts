@@ -1,11 +1,11 @@
 import { HTTPException } from "hono/http-exception";
-import { db } from "../application/db";
-import { LoginUserRequest, RegisterUserRequest, toUserResponse, UserResponse } from "../model/user-model";
-import { UserValidation } from "../validation/user-validation";
+import { db } from "../database";
+import { LoginUserRequest, RegisterUserRequest, toUserResponse, UserResponse } from "../../domain/model/user-model";
+import { UserValidation } from "../../application/validation/user-validation";
 import { count, eq } from "drizzle-orm";
-import { emailVerificationsTable, sessionsTable, usersTable } from "../application/db/schema";
+import { emailVerificationsTable, sessionsTable, usersTable } from "../database/schema";
 import { ZodError } from "zod";
-import { sendMail } from "../utils/mail-sender";
+import { sendMail } from "../external/mail-sender";
 
 export class UserRepository {
     static async registerUser(request: RegisterUserRequest): Promise<UserResponse> {

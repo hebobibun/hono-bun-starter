@@ -1,6 +1,6 @@
-import { LoginUserRequest, RegisterUserRequest, verifyEmailRequest } from "../model/user-model";
-import { AuthRepository } from "../repositories/auth-repository";
-import { UserRepository } from "../repositories/user-repository";
+import { LoginUserRequest, RegisterUserRequest, verifyEmailRequest } from "../../domain/model/user-model";
+import { AuthRepository } from "../../infrastructure/repositories/auth-repository";
+import { UserRepository } from "../../infrastructure/repositories/user-repository";
 import { Context } from "hono";
 
 

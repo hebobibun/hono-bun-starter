@@ -1,6 +1,6 @@
 import { Context } from "hono";
-import { CreateContactRequest, SearchContactRequest, UpdateContactRequest } from "../model/contact-model";
-import { ContactRepository } from "../repositories/contact-repository";
+import { CreateContactRequest, SearchContactRequest, UpdateContactRequest } from "../../domain/model/contact-model";
+import { ContactRepository } from "../../infrastructure/repositories/contact-repository";
 
 export class ContactService {
     async createContact(c: Context) {

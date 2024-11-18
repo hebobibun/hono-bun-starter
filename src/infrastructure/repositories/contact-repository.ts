@@ -1,8 +1,8 @@
 import { and, eq, like, SQL, sql } from "drizzle-orm";
-import { db } from "../application/db";
-import { contactsTable } from "../application/db/schema";
-import { ContactResponse, CreateContactRequest, PaginationResult, SearchContactRequest, toContactResponse, UpdateContactRequest } from "../model/contact-model";
-import { ContactValidation } from "../validation/contact-validation";
+import { db } from "../database";
+import { contactsTable } from "../database/schema";
+import { ContactResponse, CreateContactRequest, PaginationResult, SearchContactRequest, toContactResponse, UpdateContactRequest } from "../../domain/model/contact-model";
+import { ContactValidation } from "../../application/validation/contact-validation";
 import { HTTPException } from "hono/http-exception";
 import { ZodError } from "zod";
 

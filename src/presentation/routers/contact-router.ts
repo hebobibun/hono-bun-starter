@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { authMiddleware } from "../middleware/auth-middleware";
-import { CreateContactRequest, SearchContactRequest, UpdateContactRequest } from "../model/contact-model";
-import { ContactRepository } from "../repositories/contact-repository";
-import { ContactService } from "../services/contact-service";
+import { CreateContactRequest, SearchContactRequest, UpdateContactRequest } from "../../domain/model/contact-model";
+import { ContactRepository } from "../../infrastructure/repositories/contact-repository";
+import { ContactService } from "../../application/services/contact-service";
 
 const contactService = new ContactService();
 

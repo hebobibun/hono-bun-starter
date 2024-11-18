@@ -1,5 +1,5 @@
 import { MiddlewareHandler } from "hono";
-import { AuthRepository } from "../repositories/auth-repository";
+import { AuthRepository } from "../../infrastructure/repositories/auth-repository";
 
 export const authMiddleware: MiddlewareHandler = async (c, next) => {
     const session_id = c.req.header('Authorization');

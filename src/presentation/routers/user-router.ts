@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { UserService } from "../services/user-service";
+import { UserService } from "../../application/services/user-service";
 
 const userService = new UserService();
 

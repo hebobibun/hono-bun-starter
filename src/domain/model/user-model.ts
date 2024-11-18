@@ -1,4 +1,4 @@
-import { SelectUser } from "../application/db/schema";
+import { SelectUser } from "../../infrastructure/database/schema";
 
 export type RegisterUserRequest = {
     userID?: string;

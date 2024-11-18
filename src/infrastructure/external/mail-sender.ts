@@ -1,7 +1,7 @@
 // send email using resend
 import { Resend } from "resend";
 import { config } from "dotenv";
-import { logger } from "../application/logger";
+import { logger } from "../logging/logger";
 
 config({ path: '.env' })
 
