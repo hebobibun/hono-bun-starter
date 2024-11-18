@@ -6,6 +6,7 @@ Example of using Hono with Bun and Turso
 - Bun as Package Manager & Runtime
 - Turso as Database
 - Drizzle as ORM
+- Resend as Email Service
 - Zod as Schema Validator
 
 ## How to run
